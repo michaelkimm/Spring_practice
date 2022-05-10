@@ -1,27 +1,23 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
+import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
-class MemberServiceTest {
-    private MemberService memberService;
-    private MemoryMemberRepository memberRepository;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-    @BeforeEach
-    void beforeEach() {
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository);
-    }
-    @AfterEach
-    void afterEach() {
-        memberRepository.clearAll();
-    }
+@SpringBootTest
+@Transactional
+class MemberServiceIntegrationTest {
+    @Autowired private MemberService memberService;
+    @Autowired private MemberRepository memberRepository;
 
     @Test
     void 회원_가입() {
