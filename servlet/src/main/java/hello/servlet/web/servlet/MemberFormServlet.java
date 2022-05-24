@@ -1,5 +1,7 @@
 package hello.servlet.web.servlet;
 
+import org.springframework.web.multipart.MultipartResolver;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +16,7 @@ public class MemberFormServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("utf-8");
-
+        MultipartResolver
         PrintWriter w = response.getWriter();
         w.write("<!DOCTYPE html>\n" +
                 "<html>\n" +
